@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "wf: help",
+      "type": "shell",
+      "command": "npx team-workflows help",
+      "problemMatcher": []
+    },
+    {
+      "label": "wf: start feature branch",
+      "type": "shell",
+      "command": "npx team-workflows start",
+      "problemMatcher": []
+    },
+    {
+      "label": "wf: check readiness",
+      "type": "shell",
+      "command": "npx team-workflows check",
+      "problemMatcher": []
+    },
+    {
+      "label": "wf: push to staging",
+      "type": "shell",
+      "command": "npx team-workflows staging",
+      "problemMatcher": []
+    },
+    {
+      "label": "wf: merge to production",
+      "type": "shell",
+      "command": "npx team-workflows production",
+      "problemMatcher": []
+    },
+    {
+      "label": "wf: netlify config",
+      "type": "shell",
+      "command": "npx team-workflows netlify",
+      "problemMatcher": []
+    }
+  ]
+}

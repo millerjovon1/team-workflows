@@ -1,0 +1,26 @@
+{
+  "name": "team-workflows",
+  "version": "1.0.0",
+  "description": "Installable team workflow CLI for GitHub repos — branching, staging, production, and Netlify config",
+  "type": "module",
+  "bin": {
+    "team-workflows": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "keywords": [
+    "cli",
+    "workflow",
+    "git",
+    "netlify",
+    "vite",
+    "staging",
+    "production"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
