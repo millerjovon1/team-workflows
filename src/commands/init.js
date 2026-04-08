@@ -48,6 +48,11 @@ export async function init() {
     'wf:staging':    'npx team-workflows staging',
     'wf:production': 'npx team-workflows production',
     'wf:netlify':    'npx team-workflows netlify',
+    'wf:status':     'npx team-workflows status',
+    'wf:fix':        'npx team-workflows fix',
+    'wf:doctor':     'npx team-workflows doctor',
+    'wf:preview':    'npx team-workflows preview',
+    'wf:update':     'npx team-workflows update',
   };
 
   let scriptsAdded = 0;
@@ -97,11 +102,16 @@ export async function init() {
   }
 
   log.blank();
-  log.success('Initialization complete!');
-  log.info('Next steps:');
-  log.dim('1. Read START-HERE.md');
-  log.dim('2. npm run wf:start   — create a feature branch');
-  log.dim('3. npm run wf:check   — verify before pushing');
-  log.dim('4. npm run wf:staging — push to staging');
+  log.header('Setup complete');
+  log.blank();
+  log.success('Installed npm scripts: wf:help, wf:start, wf:check, wf:staging,');
+  log.dim('                      wf:production, wf:netlify, wf:status, wf:fix,');
+  log.dim('                      wf:doctor, wf:preview, wf:update');
+  log.blank();
+  log.success('Created template files:');
+  log.dim('  netlify.toml · .vscode/tasks.json · START-HERE.md');
+  log.dim('  .github/workflows/staging.yml · .github/workflows/production.yml');
+  log.blank();
+  log.step('Run "npm run wf:help" to see the full workflow and get started.');
   log.blank();
 }

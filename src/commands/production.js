@@ -12,7 +12,12 @@ function ask(question) {
   });
 }
 
+import { runHook } from '../utils/hooks.js';
+import { logAction } from '../utils/report.js';
+
 export async function production() {
+  runHook('pre-merge');
+  logAction('production', { branch: currentBranch() });
   log.header('team-workflows production');
 
   if (!isGitRepo()) {

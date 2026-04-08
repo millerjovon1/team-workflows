@@ -1,0 +1,6 @@
+{
+  "bannedDependencies": [
+    "left-pad",
+    "event-stream"
+  ]
+}

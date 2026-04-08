@@ -22,5 +22,15 @@
   "license": "MIT",
   "engines": {
     "node": ">=18"
+  },
+  "scripts": {
+    "audit": "npm audit",
+    "security": "echo 'Security scan placeholder (add your tool)'",
+    "ai:scan": "echo 'AI code scan placeholder (add your tool)'",
+    "preview": "npx serve dist",
+    "wf:preview": "npm run build && npm run preview"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
   }
 }

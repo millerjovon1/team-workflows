@@ -1,3 +1,4 @@
+import { checkDependencyPolicy } from '../utils/deppolicy.js';
 import { isGitRepo, currentBranch, hasUncommittedChanges, defaultBranch, hasRemote, exec } from '../utils/git.js';
 import { fileExists, readJson } from '../utils/fs.js';
 import { log } from '../utils/log.js';
@@ -65,8 +66,47 @@ export async function check() {
         issues++;
       }
     }
+
+    // Security checks
+    if (pkg.scripts?.audit) {
+      log.step('Running npm audit...');
+      try {
+        exec('npm run audit', { stdio: 'inherit' });
+        log.success('npm audit passed.');
+      } catch {
+        log.warn('npm audit found vulnerabilities.');
+        issues++;
+      }
+    }
+    if (pkg.scripts?.security) {
+      log.step('Running security scan...');
+      try {
+        exec('npm run security', { stdio: 'inherit' });
+        log.success('Security scan passed.');
+      } catch {
+        log.warn('Security scan failed or found issues.');
+        issues++;
+      }
+    }
+    if (pkg.scripts?.["ai:scan"]) {
+      log.step('Running AI code scan...');
+      try {
+        exec('npm run ai:scan', { stdio: 'inherit' });
+        log.success('AI code scan passed.');
+      } catch {
+        log.warn('AI code scan failed or found issues.');
+        issues++;
+      }
+    }
   } else {
     log.warn('No package.json found.');
+    issues++;
+  }
+
+
+  // Dependency policy enforcement
+  if (!checkDependencyPolicy()) {
+    log.error('Dependency policy violation.');
     issues++;
   }
 
